@@ -4,9 +4,9 @@ import { useCallback, useRef } from 'react'
 import { Platform, StatusBar, useColorScheme } from 'react-native'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 import { darkTheme, lightTheme } from 'src/constants/themes'
-import { SafeArea } from 'src/shared/components/Layout'
+import { SafeAreaView } from 'src/shared/components/Layout'
+import { RootStack } from 'src/shared/Stack'
 import { ThemeProvider } from 'src/shared/styled'
-import { RootStack } from './stacks/RootStack'
 
 export const Navigation = () => {
   const navigationRef =
@@ -38,7 +38,7 @@ export const Navigation = () => {
   return (
     <ThemeProvider theme={theme}>
       <SafeAreaProvider>
-        <SafeArea edges={['top']}>
+        <SafeAreaView edges={['top']}>
           <NavigationContainer
             ref={navigationRef}
             // linking={linkingConfiguration}
@@ -51,7 +51,7 @@ export const Navigation = () => {
             barStyle={`${colorScheme === 'dark' ? 'light' : 'dark'}-content`}
             backgroundColor="transparent"
           />
-        </SafeArea>
+        </SafeAreaView>
       </SafeAreaProvider>
     </ThemeProvider>
   )

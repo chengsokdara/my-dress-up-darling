@@ -1,0 +1,84 @@
+{
+  "project_info": {
+    "project_number": "850496879269",
+    "project_id": "my-dress-up-darling",
+    "storage_bucket": "my-dress-up-darling.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850496879269:android:3fac6c309be0cfd9adeb4c",
+        "android_client_info": {
+          "package_name": "com.chengsokdara.mydressupdarling"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "850496879269-nacm9eg3k5mq25s86egie4uks1e4dv2l.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chengsokdara.mydressupdarling",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "850496879269-109446jrfrf9mt40l83uh7ni24jh6fgl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoNiKt1xqnsmQjJWU0d_rSzOWwpKaJW-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "850496879269-109446jrfrf9mt40l83uh7ni24jh6fgl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:850496879269:android:18975860b0aac753adeb4c",
+        "android_client_info": {
+          "package_name": "com.chengsokdara.mydressupdarling.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "850496879269-fuoui3um1590hi1jnb09m4j0vvav3kpr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chengsokdara.mydressupdarling.debug",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
+          }
+        },
+        {
+          "client_id": "850496879269-109446jrfrf9mt40l83uh7ni24jh6fgl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoNiKt1xqnsmQjJWU0d_rSzOWwpKaJW-4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "850496879269-109446jrfrf9mt40l83uh7ni24jh6fgl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

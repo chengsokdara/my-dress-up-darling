@@ -1,9 +1,9 @@
 import { Text, View } from 'react-native'
 
-export const HomeScreen = () => {
+export const VolumeScreen = () => {
   return (
     <View>
-      <Text>Home</Text>
+      <Text>Volume</Text>
     </View>
   )
 }

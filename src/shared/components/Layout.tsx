@@ -1,6 +1,6 @@
-import { SafeAreaView } from 'react-native-safe-area-context'
+import { SafeAreaView as RNSafeAreaView } from 'react-native-safe-area-context'
 import styled from 'src/shared/styled'
 
-export const SafeArea = styled(SafeAreaView)`
+export const SafeAreaView = styled(RNSafeAreaView)`
   flex: 1;
 `

@@ -1,8 +1,8 @@
 type TRootStackParamList = {
-  HomeStack: undefined
+  FeatureStack: undefined
   LoadingScreen: undefined
 }
 
-type THomeStackParamList = {
-  HomeScreen: undefined
+type TFeatureStackParamList = {
+  VolumeScreen: undefined
 }
