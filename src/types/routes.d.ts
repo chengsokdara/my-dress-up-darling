@@ -4,5 +4,8 @@ type TRootStackParamList = {
 }
 
 type TFeatureStackParamList = {
-  VolumeScreen: undefined
+  HomeScreen: undefined
+  ChapterScreen?: {
+    index: number
+  }
 }

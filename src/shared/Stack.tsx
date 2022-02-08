@@ -12,7 +12,7 @@ export const RootStack = () => {
   useEffect(() => {
     timeoutRef.current = setTimeout(() => {
       setLoading(false)
-    }, 3000)
+    }, 1000)
   }, [loading])
 
   return (
