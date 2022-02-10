@@ -7,7 +7,7 @@ import defaultDataJson from 'src/assets/data/defaultData.json'
 export const useConfig = () => {
   useEffect(() => {
     remoteConfig().setConfigSettings({
-      minimumFetchIntervalMillis: 300000, // 5 minutes
+      minimumFetchIntervalMillis: 180000, // 3 minutes
     })
     remoteConfig()
       .setDefaults({

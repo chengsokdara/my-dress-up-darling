@@ -39,20 +39,22 @@ export const ChapterScreen = ({ route, navigation }: TChapterScreenProps) => {
   })
   const dataLength = useRef<number>(0)
   const listRef = useRef<FlatList>(null)
+  const mounted = useRef<boolean>(true)
   const viewableItemsChangedRef = useRef(
     ({ viewableItems }: { viewableItems: Array<ViewToken> }) => {
-      const firstIndex = viewableItems.some(vi => vi.index === 0)
+      const firstIndex = viewableItems.some(vi => vi?.index === 0)
       const lastIndex =
-        viewableItems[viewableItems.length - 1].index === dataLength.current + 1
+        viewableItems[viewableItems.length - 1]?.index ===
+        dataLength.current + 1
       if (firstIndex) {
         setScrollIndex(1)
       } else if (lastIndex) {
         setScrollIndex(dataLength.current)
       } else if (
-        viewableItems[0].item.type === 'image' &&
-        viewableItems[0].index
+        viewableItems[0]?.item.type === 'image' &&
+        viewableItems[0]?.index
       ) {
-        setScrollIndex(viewableItems[0].index)
+        setScrollIndex(viewableItems[0]?.index)
       }
     },
   )
@@ -89,10 +91,12 @@ export const ChapterScreen = ({ route, navigation }: TChapterScreenProps) => {
   // }, [adLoadError, adLoaded, adPresentError, adPresented])
 
   const handleIndexChange = useCallback(index => {
-    listRef.current?.scrollToIndex({
-      animated: false,
-      index,
-    })
+    if (index > 0) {
+      listRef.current?.scrollToIndex({
+        animated: false,
+        index,
+      })
+    }
   }, [])
 
   const handleNextChapter = useCallback(() => {
@@ -139,7 +143,7 @@ export const ChapterScreen = ({ route, navigation }: TChapterScreenProps) => {
     const pages: IPageData[] = []
     let counter = 1,
       isError = false
-    while (!isError) {
+    while (!isError && mounted.current === true) {
       try {
         const page = await new Promise<IPageData>((resolve, reject) => {
           if (route.params?.index) {
@@ -152,6 +156,7 @@ export const ChapterScreen = ({ route, navigation }: TChapterScreenProps) => {
               places,
               zeroPad(counter, places.length - 2),
             )
+            console.info({ uri })
             RNImage.getSize(
               uri,
               (width, height) => {
@@ -170,29 +175,39 @@ export const ChapterScreen = ({ route, navigation }: TChapterScreenProps) => {
           } else {
             reject('no chapter index provided!')
           }
+          console.info({ counter })
         })
         pages.push(page)
         counter++
       } catch (error) {
-        crashlytics().recordError(error as Error)
-        isError = true
+        if (counter > 10) {
+          crashlytics().recordError(error as Error)
+          isError = true
+        } else {
+          counter++
+        }
       }
     }
-    dataLength.current = pages.length
-    // Push two ads at the start and end of the list
-    if (pages.length > 0) {
-      pages.splice(1, 0, { type: 'ad', uid: 'chapter-start-admob-banner-ad' })
-      pages.splice(pages.length - 1, 0, {
-        type: 'ad',
-        uid: 'chapter-end-admob-banner-ad',
-      })
+    if (mounted.current === true) {
+      dataLength.current = pages.length
+      // Push two ads at the start and end of the list
+      if (pages.length > 0) {
+        pages.splice(1, 0, { type: 'ad', uid: 'chapter-start-admob-banner-ad' })
+        pages.splice(pages.length - 1, 0, {
+          type: 'ad',
+          uid: 'chapter-end-admob-banner-ad',
+        })
+      }
+      setData(pages)
+      setLoading(false)
     }
-    setData(pages)
-    setLoading(false)
   }, [])
 
   useEffect(() => {
     fetchPages()
+    return () => {
+      mounted.current = false
+    }
   }, [])
 
   useEffect(() => {
